@@ -7,8 +7,13 @@ class Point {
 	this.y = y; 
     }
 
-    public double getX() { return this.x; } 
-    public double getY() { return this.y; } 
+    public double getX() { 
+        return this.x;
+    } 
+    
+    public double getY() {
+        return this.y;
+    } 
     
     // bunch of overloaded functions 
     public Point findMidTo(Point p) { 
@@ -26,4 +31,3 @@ class Point {
 			 (p1.getY() + p2.getY() + p3.getY())/3 ); 
     }
 }
-	

@@ -3,8 +3,12 @@ import java.io.*;
 public class Main {
     public static void main(String[] args) {
         int numOfArgs = args.length;
+        Mandelbrot mandelbrot = new Mandelbrot();
 
-        /*if( args[0].toLowerCase().equals("mandelbrot") ){
+    }
+}
+
+/*if( args[0].toLowerCase().equals("mandelbrot") ){
             System.out.println(args[0]);
         }
         else if( args[0].toLowerCase().equals("julia") ) {
@@ -34,6 +38,3 @@ public class Main {
         System.out.println("sq c1 " + c4.getReal() + " " + c4.getImag() );
         System.out.println("sq c2 " + c5.getReal() + " " + c5.getImag() );
         */
-
-    }
-}

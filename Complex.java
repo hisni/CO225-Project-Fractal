@@ -1,3 +1,5 @@
+import java.math.*;
+
 class Complex {
     private double real, imaginary;
 
@@ -15,7 +17,7 @@ class Complex {
     }
 
     public static double absolute(Complex z){
-        return Math.sqrt( Math.pow(z.getReal(), 2) + Math.pow(z.getImag(), 2) );
+        return Math.sqrt( z.getReal()*z.getReal() + z.getImag()*z.getImag() );
     }
 
     public static  Complex addition(Complex z1, Complex z2){
@@ -25,7 +27,7 @@ class Complex {
     }
 
     public static Complex square(Complex z){
-        double x =  Math.pow(z.getReal(), 2) - Math.pow(z.getImag(), 2);
+        double x =  z.getReal()*z.getReal() - z.getImag()*z.getImag();
         double y = 2*z.getReal()*z.getImag();
         return new Complex(x,y);
     }
