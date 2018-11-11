@@ -3,21 +3,47 @@ import java.io.*;
 public class Main {
     public static void main(String[] args) {
         int numOfArgs = args.length;
-        Mandelbrot mandelbrot = new Mandelbrot();
-
+        if ( numOfArgs > 0 ){
+            if( args[0].toLowerCase().equals("mandelbrot") ){
+                if ( numOfArgs == 6 ){
+                    Double x1 = Double.parseDouble(args[1]);
+                    Double x2 = Double.parseDouble(args[2]);
+                    Double y1 = Double.parseDouble(args[3]);
+                    Double y2 = Double.parseDouble(args[4]);
+                    Integer iterations = Integer.parseInt(args[5]);
+                    Mandelbrot mandelbrot = new Mandelbrot(x1,x2,y1,y2,iterations);
+                }
+                else if ( numOfArgs == 5 ){
+                    Double x1 = Double.parseDouble(args[1]);
+                    Double x2 = Double.parseDouble(args[2]);
+                    Double y1 = Double.parseDouble(args[3]);
+                    Double y2 = Double.parseDouble(args[4]);
+                    Mandelbrot mandelbrot = new Mandelbrot(x1,x2,y1,y2);
+                }
+                else{
+                    Mandelbrot mandelbrot = new Mandelbrot();
+                }
+            }
+            else if( args[0].toLowerCase().equals("julia") ) {
+                if( numOfArgs == 3 ){
+                    Double real = Double.parseDouble(args[1]);
+                    Double complex = Double.parseDouble(args[2]);
+                    Julia julia = new Julia(real, complex);
+                }
+                else {
+                    Julia julia = new Julia();
+                }
+            }
+            else{
+                System.out.println("Input a valid Fractal set");
+            }
+        }
+        else{
+                System.out.println("Fractal set Name not given");
+        }
     }
 }
 
-/*if( args[0].toLowerCase().equals("mandelbrot") ){
-            System.out.println(args[0]);
-        }
-        else if( args[0].toLowerCase().equals("julia") ) {
-            System.out.println(args[0]);
-        }
-        else{
-            System.out.println("Input a valid Fractal set");
-        }*/
-        
         /*double x=4;
         double y=3;
         double a=1;
