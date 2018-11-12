@@ -5,8 +5,8 @@ import java.awt.image.BufferedImage;
 
 public class Fractal extends JPanel{
     
-    public static final int PANEL_WIDTH = 800;
-    public static final int PANEL_HEIGHT = 800;
+    public static final int PANEL_WIDTH = 800;          //Fixed Panel Width
+    public static final int PANEL_HEIGHT = 800;         //Fixed Panel Height
     protected static BufferedImage picture = new BufferedImage(PANEL_WIDTH,PANEL_HEIGHT,BufferedImage.TYPE_INT_RGB);
     
     public void plotFractal(){
