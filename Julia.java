@@ -1,34 +1,34 @@
 import java.awt.Color;
 
-public final class Julia extends Fractal {
+public final class Julia extends Fractal implements Runnable {
     private Complex juliaConst;
-    public int iterations;
+    private int iterations, heightStart, heightEnd;
 
-    public Julia(){
+    public Julia( int threadNo,  int NumOfThreads ){
         juliaConst = new Complex( -0.4, 0.6 );
         this.iterations = 1000;
-        plotFractal();
-        plot();
+        this.heightStart = (PANEL_HEIGHT/NumOfThreads)*(threadNo-1);
+        this.heightEnd = (PANEL_HEIGHT/NumOfThreads)*threadNo;
     }
     
-    public Julia(double x, double y ){
+    public Julia(double x, double y, int threadNo,  int NumOfThreads ){
         juliaConst = new Complex( x, y );
         this.iterations = 1000;
-        plotFractal();
-        plot();
+        this.heightStart = (PANEL_HEIGHT/NumOfThreads)*(threadNo-1);
+        this.heightEnd = (PANEL_HEIGHT/NumOfThreads)*threadNo;
     }
 
-    public void plot(){
+    public void run(){
         
         boolean divergentState;
-        double scale = (double) 1.0/400.0; //common scale for x and y
+        double scale = 2.0/PANEL_HEIGHT; //common scale for x and y
         double x,y;
         Complex znew;
           
-        for (int j=0; j<800; j++){      //impliment x scale
+        for (int j=heightStart; j<heightEnd; j++){      //impliment x scale
             y = 1 - scale*j;
             
-            for(int i=0; i<800; i++){      //impliment y scale
+            for(int i=0; i<PANEL_WIDTH; i++){      //impliment y scale
                 divergentState = false;
                 x = -1 + scale*i;
                 Complex z = new Complex(x,y);
@@ -37,7 +37,7 @@ public final class Julia extends Fractal {
                     znew = Complex.square(z);
                     z = Complex.addition( juliaConst , znew );
                                    
-                    if(Complex.absolute(z)>2){
+                    if(Complex.absolute(z)>4){
                         picture.setRGB(i,j,Color.HSBtoRGB(s/256f,1,s/(s+8f)));
                         repaint();
                         divergentState = true;

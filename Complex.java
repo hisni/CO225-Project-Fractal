@@ -17,7 +17,7 @@ class Complex {
     }
 
     public static double absolute(Complex z){
-        return Math.sqrt( Math.pow(z.getReal(), 2) + Math.pow(z.getImag(), 2) );
+        return ( Math.pow(z.getReal(), 2) + Math.pow(z.getImag(), 2) );
     }
 
     public static  Complex addition(Complex z1, Complex z2){

@@ -1,65 +1,62 @@
 import java.awt.Color;
 
-public final class Mandelbrot extends Fractal {
+public final class Mandelbrot extends Fractal implements Runnable {
 
     private double realMin, realMax, complexMin, complexMax;
-    private int iterations;
+    private int iterations, heightStart, heightEnd;
 
-    public Mandelbrot() {
+    public Mandelbrot( int threadNo, int NumOfThreads ) {
         this.realMin = -1;
         this.realMax = 1;
         this.complexMin = -1;
         this.complexMax = 1;
         this.iterations = 1000;
-        plot();
-        plotFractal();
+        this.heightStart = (PANEL_HEIGHT/NumOfThreads)*(threadNo-1);
+        this.heightEnd = (PANEL_HEIGHT/NumOfThreads)*threadNo;
     }
 
-    public Mandelbrot(double x1, double x2, double y1, double y2) {
+    public Mandelbrot( double x1, double x2, double y1, double y2,int threadNo, int NumOfThreads ) {
         this.realMin = x1;
         this.realMax = x2;
         this.complexMin = y1;
         this.complexMax = y2;
         this.iterations = 1000;
-        plot();
-        plotFractal();
-
+        this.heightStart = (PANEL_HEIGHT/NumOfThreads)*(threadNo-1);
+        this.heightEnd = (PANEL_HEIGHT/NumOfThreads)*threadNo;
     }
 
-    public Mandelbrot(double x1, double x2, double y1, double y2, int numIter) {
+    public Mandelbrot(double x1, double x2, double y1, double y2, int numIter,int threadNo, int NumOfThreads ) {
         this.realMin = x1;
         this.realMax = x2;
         this.complexMin = y1;
         this.complexMax = y2;
         this.iterations = numIter;
-        plot();
-        plotFractal();
-
+        this.heightStart = (PANEL_HEIGHT/NumOfThreads)*(threadNo-1);
+        this.heightEnd = (PANEL_HEIGHT/NumOfThreads)*threadNo;
     }
 
-    public void plot(){
-        double xscale = Math.abs(realMin-realMax)/800.0;  // Unit x scale
-        double yscale = Math.abs(complexMin-complexMax)/800.0;  // Unit y scale
+    public void run(){
+        double xscale = Math.abs(realMin-realMax)/(double)PANEL_WIDTH;  // Unit x scale
+        double yscale = Math.abs(complexMin-complexMax)/(double)PANEL_HEIGHT;  // Unit y scale
     
         boolean divergentState;
         double x,y;
         Complex znew;
     
-        for (int j=0; j<800; j++){   //implement y scale
+        for (int j=heightStart; j<heightEnd; j++){   //implement y scale
             y = complexMax - j*yscale;
-       
-             for (int i=0; i<800; i++){     //implement x scale
-                divergentState = false;   
-                Complex c = new Complex(0,0); 
-                x = realMin + i*xscale;
-                Complex z = new Complex(x,y);
-          
+        
+            for (int i=0; i<PANEL_WIDTH; i++){     //implement x scale
+            divergentState = false;   
+            Complex c = new Complex(0,0); 
+            x = realMin + i*xscale;
+            Complex z = new Complex(x,y);
+        
                 for (int s=0; s<iterations; s++){  //Count number of iteration
                     znew = Complex.square(c);
                     c = Complex.addition(z,znew);
-                    
-            
-                    if(Complex.absolute(c)>2){  // check for mandelbrot number
+                            
+                    if(Complex.absolute(c)>4){  // check for mandelbrot number
                         picture.setRGB(i,j,Color.HSBtoRGB(s/256f,1,s/(s+8f)));
                         repaint();
                         divergentState = true;
@@ -69,7 +66,7 @@ public final class Mandelbrot extends Fractal {
         
                 if(divergentState == false){                    //in mandelbrot
                     picture.setRGB(i,j,Color.black.getRGB());
-                repaint();
+                    repaint();
                 }
             }
         }
