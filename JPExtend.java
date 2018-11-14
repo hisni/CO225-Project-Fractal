@@ -10,7 +10,7 @@ public class JPExtend extends JPanel{
     public static int PANEL_HEIGHT = 800;         //Fixed Panel Height
     protected static BufferedImage picture = new BufferedImage(PANEL_WIDTH,PANEL_HEIGHT,BufferedImage.TYPE_INT_RGB);
     
-    public void plotFractal( String fractalSet ){
+    protected void plotFractal( String fractalSet ){
         JFrame canvas = new JFrame( fractalSet );
         canvas.setContentPane(this);
         canvas.setPreferredSize( new Dimension( PANEL_WIDTH , PANEL_HEIGHT ) );
@@ -25,12 +25,12 @@ public class JPExtend extends JPanel{
         r.drawImage(picture,0,0,this); 
     }
 
-    public void plotInSet( int x, int y ){                  //RGB setting for points in fractal set
+    protected void plotInSet( int x, int y ){                  //RGB setting for points in fractal set
         picture.setRGB(x,y,Color.black.getRGB());
         repaint();
     }
 
-    public void plotNotInSet( int x, int y, int ITR ){      //RGB setting for points not in fractal set
+    protected void plotNotInSet( int x, int y, int ITR ){      //RGB setting for points not in fractal set
         picture.setRGB(x,y,Color.HSBtoRGB(ITR/256f,1,ITR/(ITR+16f)));
         repaint();
     }

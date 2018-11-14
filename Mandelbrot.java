@@ -3,26 +3,6 @@ public final class Mandelbrot extends JPExtend implements Runnable {
     private double realMin, realMax, complexMin, complexMax;
     private int iterations, heightStart, heightEnd;
 
-    public Mandelbrot( int threadNo, int NumOfThreads ) {               //Constructor for 2 Arguments
-        this.realMin = -1;                      //Default values
-        this.realMax = 1;
-        this.complexMin = -1;
-        this.complexMax = 1;
-        this.iterations = 1000;
-        this.heightStart = (PANEL_HEIGHT/NumOfThreads)*(threadNo-1);    //Calculating points range to process in a single Thread
-        this.heightEnd = (PANEL_HEIGHT/NumOfThreads)*threadNo;
-    }
-
-    public Mandelbrot( double x1, double x2, double y1, double y2,int threadNo, int NumOfThreads ) {    //Constructor for 6 Arguments
-        this.realMin = x1;                      //Given range and Default value for number of iterations 
-        this.realMax = x2;
-        this.complexMin = y1;
-        this.complexMax = y2;
-        this.iterations = 1000;
-        this.heightStart = (PANEL_HEIGHT/NumOfThreads)*(threadNo-1);    //Calculating points range to process in a single Thread
-        this.heightEnd = (PANEL_HEIGHT/NumOfThreads)*threadNo;
-    }
-
     public Mandelbrot(double x1, double x2, double y1, double y2, int numIter,int threadNo, int NumOfThreads ) {    //Constructor for 7 Arguments
         this.realMin = x1;                      //Given Range and number of iterations
         this.realMax = x2;
@@ -34,18 +14,17 @@ public final class Mandelbrot extends JPExtend implements Runnable {
     }
 
     public void run(){
-        double xscale = Math.abs(realMin-realMax)/(double)PANEL_WIDTH;          //Unit real scale
-        double yscale = Math.abs(complexMin-complexMax)/(double)PANEL_HEIGHT;   //Unit complex scale
-    
+        double unitScaleX = Math.abs( realMin - realMax )/(double)PANEL_WIDTH;          //Unit real scale
+        double unitScaleY = Math.abs( complexMin - complexMax )/(double)PANEL_HEIGHT;   //Unit complex scale
         boolean divergentState;
         double real,complex;         //Cordinates in complex plane
         Complex znew;
     
-        for (int j=heightStart; j<heightEnd; j++){      //Looping through Vertical axis of panel
-            complex = complexMax - j*yscale;            //Complex part in complex plane
-        
+        for (int j=heightStart; j<heightEnd; j++){      //Looping through Vertical axis of panel       
             for (int i=0; i<PANEL_WIDTH; i++){          //Looping through Horizontal  axis of panel
-                real = realMin + i*xscale;              //real part in complex plane
+                
+                real = realMin + i*unitScaleX;          //real part in complex plane
+                complex = complexMax - j*unitScaleY;    //Complex part in complex plane
                 Complex z = new Complex(0,0);           //Initial complex point
                 Complex c = new Complex(real,complex);  //Maped complex point of Panel point
                 divergentState = false;
@@ -62,7 +41,7 @@ public final class Mandelbrot extends JPExtend implements Runnable {
                 }
         
                 if(divergentState == false){            //In Mandelbrot set
-                    plotInSet( i , j );
+                    plotInSet( i, j );
                 }
             }
         }
