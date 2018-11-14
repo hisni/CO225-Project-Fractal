@@ -13,12 +13,12 @@ public final class Mandelbrot extends JPExtend implements Runnable {
     }
 
     public void run(){
-        double unitScaleX = Math.abs( realMin - realMax )/(double)PANEL_WIDTH;          //Unit real scale
-        double unitScaleY = Math.abs( complexMin - complexMax )/(double)PANEL_HEIGHT;   //Unit complex scale
-        boolean divergentState;
         double real;        //Cordinates in complex plane
         double complex;
         Complex znew;
+        double unitScaleX = Math.abs( realMin - realMax )/(double)PANEL_WIDTH;          //Unit real scale
+        double unitScaleY = Math.abs( complexMin - complexMax )/(double)PANEL_HEIGHT;   //Unit complex scale
+        boolean divergentState;
     
         for (int j=heightStart; j<heightEnd; j++){      //Looping through Vertical axis of panel       
             for (int i=0; i<PANEL_WIDTH; i++){          //Looping through Horizontal  axis of panel

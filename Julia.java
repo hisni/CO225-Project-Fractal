@@ -10,10 +10,11 @@ public final class Julia extends JPExtend implements Runnable {
     }
 
     public void run(){
-        double real,complex;
-        double unitScale = 2.0/PANEL_HEIGHT;            //Common Unit Scale for real and complex
-        Complex znew;
+        double real;                //Cordinates in complex plane
+        double complex;
         boolean divergentState;
+        Complex znew;
+        double unitScale = 2.0/PANEL_HEIGHT;            //Common Unit Scale for real and complex
         
         for (int j=heightStart; j<heightEnd; j++){      //Looping through Vertical axis of panel
             for(int i=0; i<PANEL_WIDTH; i++){           //Looping through Horizontal  axis of panel
