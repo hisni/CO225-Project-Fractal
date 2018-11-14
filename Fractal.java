@@ -1,3 +1,10 @@
+/*
+    Authors:
+    Hisni Mohammed M.H.  (E/15/131)
+    Suhail S. (E/15/348)
+    Date: 14/11/2018
+    Group Project | Fractals
+*/
 import java.io.*;
 
 public class Fractal {
