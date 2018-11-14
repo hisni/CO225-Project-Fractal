@@ -1,9 +1,5 @@
 ## CO225-Project-Fractal
-
-1. Class 'Complex' for manipulate Complex numbers and function related to complex numbers.
-2. Class 'JPExtend' inherited from JPanel
-3. Class 'Mendalbrot' and 'Julia' inherited from JPExtend and implements Runnable
-4. Main public class Fractal
+  Software that would plot two of the most popular fractals: Mandelbrot set and Julia set.
 
 ## Compilation
   ### Java Compiler

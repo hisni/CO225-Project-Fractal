@@ -19,7 +19,7 @@ public class Fractal {
         Julia [] julia = new Julia[NumOfThreads];                   //Runnable Object Julia Array
         Thread [] thread = new Thread[NumOfThreads];                //Array of Threads
         
-        if( numOfArgs>0 && args[0].toLowerCase().equals("mandelbrot") ){       //If Input Mandelbrot set
+        if( numOfArgs>0 && args[0].equalsIgnoreCase("mandelbrot") ){       //If Input Mandelbrot set
             if ( numOfArgs == 6 ){                              //Mandelbrot with 5 Arguments
                 realMin = Double.parseDouble(args[1]);
                 realMax = Double.parseDouble(args[2]);
@@ -50,7 +50,7 @@ public class Fractal {
             joinThreads( thread );                      //Check whether Threads are finished Process
             fractal.plotFractal( "Mandelbrot Set");     //Draw Picture after all the threads are finished 
         }
-        else if( numOfArgs>0 && args[0].toLowerCase().equals("julia") ) {      //If Input Julia set
+        else if( numOfArgs>0 && args[0].equalsIgnoreCase("julia") ) {      //If Input Julia set
             
             if( numOfArgs == 3 ){                               //Julia with 2 Arguments
                 realJulia = Double.parseDouble(args[1]);
