@@ -40,5 +40,4 @@ public final class Julia extends JPExtend implements Runnable {
             }
         }
     }
-
 }

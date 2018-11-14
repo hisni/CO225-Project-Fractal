@@ -1,5 +1,4 @@
 public final class Mandelbrot extends JPExtend implements Runnable {
-
     private double realMin, realMax, complexMin, complexMax;
     private int iterations, heightStart, heightEnd;
 
@@ -22,7 +21,7 @@ public final class Mandelbrot extends JPExtend implements Runnable {
     
         for (int j=heightStart; j<heightEnd; j++){      //Looping through Vertical axis of panel       
             for (int i=0; i<PANEL_WIDTH; i++){          //Looping through Horizontal  axis of panel
-                
+
                 real = realMin + i*unitScaleX;          //real part in complex plane
                 complex = complexMax - j*unitScaleY;    //Complex part in complex plane
                 Complex z = new Complex(0,0);           //Initial complex point
@@ -39,7 +38,6 @@ public final class Mandelbrot extends JPExtend implements Runnable {
                         break;
                     }
                 }
-        
                 if(divergentState == false){            //In Mandelbrot set
                     plotInSet( i, j );
                 }
