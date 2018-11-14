@@ -1,17 +1,15 @@
-import java.awt.Color;
-
-public final class Mandelbrot extends Fractal implements Runnable {
+public final class Mandelbrot extends JPExtend implements Runnable {
 
     private double realMin, realMax, complexMin, complexMax;
     private int iterations, heightStart, heightEnd;
 
-    public Mandelbrot( int threadNo, int NumOfThreads ) {       //Constructor for 2 Arguments
+    public Mandelbrot( int threadNo, int NumOfThreads ) {               //Constructor for 2 Arguments
         this.realMin = -1;                      //Default values
         this.realMax = 1;
         this.complexMin = -1;
         this.complexMax = 1;
         this.iterations = 1000;
-        this.heightStart = (PANEL_HEIGHT/NumOfThreads)*(threadNo-1);        //Calculating points range to process in a single Thread
+        this.heightStart = (PANEL_HEIGHT/NumOfThreads)*(threadNo-1);    //Calculating points range to process in a single Thread
         this.heightEnd = (PANEL_HEIGHT/NumOfThreads)*threadNo;
     }
 
@@ -21,7 +19,7 @@ public final class Mandelbrot extends Fractal implements Runnable {
         this.complexMin = y1;
         this.complexMax = y2;
         this.iterations = 1000;
-        this.heightStart = (PANEL_HEIGHT/NumOfThreads)*(threadNo-1);
+        this.heightStart = (PANEL_HEIGHT/NumOfThreads)*(threadNo-1);    //Calculating points range to process in a single Thread
         this.heightEnd = (PANEL_HEIGHT/NumOfThreads)*threadNo;
     }
 
@@ -31,7 +29,7 @@ public final class Mandelbrot extends Fractal implements Runnable {
         this.complexMin = y1;
         this.complexMax = y2;
         this.iterations = numIter;
-        this.heightStart = (PANEL_HEIGHT/NumOfThreads)*(threadNo-1);
+        this.heightStart = (PANEL_HEIGHT/NumOfThreads)*(threadNo-1);    //Calculating points range to process in a single Thread
         this.heightEnd = (PANEL_HEIGHT/NumOfThreads)*threadNo;
     }
 
@@ -40,7 +38,7 @@ public final class Mandelbrot extends Fractal implements Runnable {
         double yscale = Math.abs(complexMin-complexMax)/(double)PANEL_HEIGHT;   //Unit complex scale
     
         boolean divergentState;
-        double real,complex;         //Cordinates
+        double real,complex;         //Cordinates in complex plane
         Complex znew;
     
         for (int j=heightStart; j<heightEnd; j++){      //Looping through Vertical axis of panel
@@ -57,16 +55,14 @@ public final class Mandelbrot extends Fractal implements Runnable {
                     z = Complex.addition(c,znew);       // Zn^2 + c
                             
                     if(Complex.absolute(z)>4){          //Check for mandelbrot number
-                        picture.setRGB(i,j,Color.HSBtoRGB(s/256f,1,s/(s+8f)));  //Not in mandelbrot
-                        repaint();
+                        plotNotInSet( i, j, s );        //Not in Mandelbrot set
                         divergentState = true;
                         break;
                     }
                 }
         
-                if(divergentState == false){                    //In mandelbrot set
-                    picture.setRGB(i,j,Color.black.getRGB());
-                    repaint();
+                if(divergentState == false){            //In Mandelbrot set
+                    plotInSet( i , j );
                 }
             }
         }

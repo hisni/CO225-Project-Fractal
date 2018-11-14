@@ -1,6 +1,4 @@
-import java.awt.Color;
-
-public final class Julia extends Fractal implements Runnable {
+public final class Julia extends JPExtend implements Runnable {
     private Complex juliaConst;
     private int iterations, heightStart, heightEnd;
 
@@ -37,16 +35,14 @@ public final class Julia extends Fractal implements Runnable {
                     z = Complex.addition( juliaConst , znew );  // Zn^2 + JuliaConstant
                                    
                     if(Complex.absolute(z)>4){          //Check for julia set number
-                        picture.setRGB(i,j,Color.HSBtoRGB(s/256f,1,s/(s+8f)));      //Not in Julia set
-                        repaint();
+                        plotNotInSet( i, j, s );        //Not in Julia set
                         divergentState = true;
                         break;
                     }
                 }
                 
                 if( divergentState == false ){          //In Julia set
-                    picture.setRGB(i,j,Color.black.getRGB());   
-                    repaint();
+                    plotInSet( i , j );
                 }
             }
         }

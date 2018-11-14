@@ -3,7 +3,7 @@ import java.math.*;
 class Complex {
     private double real, imaginary;
 
-    Complex(double x, double y) {
+    Complex(double x, double y) {           //Constructor
         this.real = x;
         this.imaginary = y;
     }
