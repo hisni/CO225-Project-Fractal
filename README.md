@@ -7,8 +7,8 @@
   
 ## Running
   Run with :
-    - `java Fractal [Mandelbrot|Julia]`
-    - `java Fractal Mandelbrot [realmin, realmax, imagmin, imagmax]`
-    - `java Fractal Mandelbrot [realmin, realmax, imagmin, imagmax] [iterations]`
-    - `java Fractal Julia [real imag] [iterations]`
+  - `java Fractal [Mandelbrot|Julia]`
+  - `java Fractal Mandelbrot [realmin, realmax, imagmin, imagmax]`
+  - `java Fractal Mandelbrot [realmin, realmax, imagmin, imagmax] [iterations]`
+  - `java Fractal Julia [real imag] [iterations]`
   
