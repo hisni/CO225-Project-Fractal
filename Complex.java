@@ -1,3 +1,8 @@
+/*  
+    Group No : 10
+    Date: 14/11/2018
+    Group Project | Fractals
+*/
 import java.math.*;
 
 class Complex {
@@ -32,4 +37,3 @@ class Complex {
         return new Complex(x,y);
     }
 }
-

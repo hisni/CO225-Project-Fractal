@@ -1,3 +1,8 @@
+/*  
+    Group No : 10
+    Date: 14/11/2018
+    Group Project | Fractals
+*/
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*; 
@@ -34,5 +39,4 @@ public class JPExtend extends JPanel{
         picture.setRGB(x,y,Color.HSBtoRGB(ITR/256f,1,ITR/(ITR+16f)));
         repaint();
     }
-
 }
