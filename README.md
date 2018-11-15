@@ -1,5 +1,6 @@
 ## CO225-Project-Fractal
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/a95e684b144949d88aa8bd5565973f8d)](https://app.codacy.com/app/hisni/CO225-Project-Fractals?utm_source=github.com&utm_medium=referral&utm_content=hisni/CO225-Project-Fractals&utm_campaign=Badge_Grade_Settings)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/a95e684b144949d88aa8bd5565973f8d)](https://app.codacy.com/app/hisni/CO225-Project-Fractals?utm_source=github.com&utm_medium=referral&utm_content=hisni/CO225-Project-Fractals&utm_campaign=Badge_Grade_Dashboard)
 
   Software that would plot two of the most popular fractals: Mandelbrot set and Julia set.
