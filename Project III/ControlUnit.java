@@ -22,6 +22,7 @@ public class ControlUnit{
             
             decodeInst( Instruction );  //Start Decoding Instructions
             updatePC();                 //Update Program counter to fetch next instruction
+            System.out.println();
         }
     }
 
@@ -36,6 +37,7 @@ public class ControlUnit{
         }
 
         int opcode = BinToDec(Arrays.copyOfRange(inst,0, 6));  //Extract Opcode from Instruction
+        System.out.println(opcode);
         if (opcode == 0) {      //If R-Type Instruction
             System.out.println("R-Type");
             executeRType( inst );

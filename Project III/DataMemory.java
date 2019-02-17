@@ -13,5 +13,6 @@ public class DataMemory {
     
 	public void writeDM( int address, int data ) {	//Write Data to Data Memory
 		dataMemory.put( address, data );
+		System.out.println( "DMWrite at "+address+" - "+data );
 	}
 }

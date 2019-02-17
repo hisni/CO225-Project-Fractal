@@ -11,6 +11,7 @@ public class RegisterFile {
 	}
     
     public void writeReg( int address, int data ) {  //Write Data to Register
-		regSet[address] = data;
+        regSet[address] = data;
+        System.out.println("RegWrite at "+address+" - "+regSet[address]);
 	}
 }
