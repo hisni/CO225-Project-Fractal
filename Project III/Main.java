@@ -1,12 +1,20 @@
+/*
+    Authors:
+        Hisni Mohammed M.H.  (E/15/131)
+        Suhail S. (E/15/348)
+    Group No : 9
+    Project III | CPU Simulator
+*/
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) {
+        
         String fileName;
         if(args.length == 0){
-            fileName = "instructions.s" ;
+            fileName = "prog.s" ;
         }else {
             fileName = args[0];
         }
@@ -22,7 +30,10 @@ public class Main {
             ControlUnit CU = new ControlUnit();
 
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("Program Error");
+            System.exit(-1);
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("Program Error");
             System.exit(-1);
         }
     }
