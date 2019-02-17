@@ -1,21 +1,20 @@
 import java.util.*;
 
 public class InstructionMemory {
-    private static HashMap<Integer, String> InsMemory;
-    public int address;
+    private HashMap<Integer, String> InsMemory;  //Instruction memory as a Hash Map
+    private int address;
 
-    public InstructionMemory(){
-        InsMemory = new HashMap<Integer, String>();
+    public InstructionMemory(){     //Constructor
+        InsMemory = new HashMap<Integer, String>();     
         address = 0;
     }
 
-    public void addInstruction( String instruction ) {
+    public void writeIM( String instruction ) {      //Write Data to Data Memory
         InsMemory.put(address, instruction);
         address++;
     }
 
-    public static String readInstruction(int pc){
+    public String readIM(int pc){       //Read Data from Instruction Memory
         return InsMemory.get(pc);
     }
-
 }

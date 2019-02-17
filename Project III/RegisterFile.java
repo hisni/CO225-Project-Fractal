@@ -1,13 +1,16 @@
 
 public class RegisterFile {
-    public static int[] regSet = new int[32];
+    private static int[] regSet;
     
-    public static int readReg( int address ) {
+    public RegisterFile(){      //Constructor
+        regSet = new int[32];   //Set of 32 Registers (Registers as Integer Array)
+    }
+
+    public int readReg( int address ) {      //Read Data from Register
 		return regSet[address];
 	}
     
-    public static void writeReg( int address, int data ) {
+    public void writeReg( int address, int data ) {  //Write Data to Register
 		regSet[address] = data;
 	}
-
 }

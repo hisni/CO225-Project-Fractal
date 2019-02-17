@@ -13,23 +13,23 @@ public class Main {
     public static void main(String[] args) {
         
         String fileName;
-        if(args.length == 0){
+        if(args.length == 0){       //Default file name
             fileName = "prog.s" ;
         }else {
-            fileName = args[0];
+            fileName = args[0];     //Get File name from user
         }
         try {
+            CPU cpu = new CPU();        //Create a CPU object
             BufferedReader reader = new BufferedReader(new FileReader(fileName));
-            InstructionMemory insMem = new InstructionMemory();
             for (String line = reader.readLine(); line != null; line = reader.readLine()) {
-                if(!line.startsWith("//") && line.length()>0){
-                    insMem.addInstruction(line);
+                if( !line.startsWith("//") && line.length()>0 ){    //Ignore Comments and Empty lines
+                    cpu.IM.writeIM(line);       //Read by line and Store in instruction memory
                 }
             }
             reader.close();
-            ControlUnit CU = new ControlUnit();
+            cpu.Start();        //Start to fetching
 
-        } catch (IOException e) {
+        } catch (IOException e) {       //Exceptions handling
             System.out.println("Program Error");
             System.exit(-1);
         } catch (ArrayIndexOutOfBoundsException e) {
