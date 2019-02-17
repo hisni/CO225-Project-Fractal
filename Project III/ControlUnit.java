@@ -156,43 +156,43 @@ public class ControlUnit{
     private int ALUcontrol( int func ){     //Methode to set ALU controls for R-Type instructions
         int select;
         switch ( func ) {
-            case 32:
+            case 32:        //Addition
                 select = 0;
                 break;
-            case 34:
+            case 34:		//Subtraction
                 select = 1;
                 break;
-            case 24:
+            case 24:		//Multiplication
                 select = 2;
                 break;
-            case 26:
+            case 26:		//Integer division
                 select = 3;
                 break;
-            case 36:
+            case 36:		//Bitwise AND
                 select = 4;
                 break;
-            case 37:
+            case 37:		//Bitwise OR
                 select = 5;
                 break;
-            case 39:
+            case 39:    	//Bitwise NOR
                 select = 6;
                 break;
-            case 38:
+            case 38:		//Bitwise XOR
                 select = 7;
                 break;
-            case 2:
+            case 2:         //Shift right
                 select = 8;
                 break;
-            case 0:
+            case 0:         //Shift left
                 select = 9;
                 break;
-            case 42:
+            case 42:        //Set if (Data1 < Data2)
                 select = 10;
                 break;
-            case 12:
+            case 12:		//Syscall
                 select = 11;
                 break;
-            default:
+            default:        //Invalid Instruction or Default value
                 select = -1;
         }
         return select;
